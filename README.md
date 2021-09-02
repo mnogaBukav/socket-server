@@ -1,11 +1,19 @@
-heroku create socket-template --region eu
+## Socket Template
 
-heroku git:remote -app socket-template
+## Steps to start new heroku deployment
 
-heroku config:set YARN_PRODUCTION=false
-or
-heroku config:set NPM_CONFIG_PRODUCTION=false
+1) download [heroku CLI](https://devcenter.heroku.com/articles/heroku-cli#download-and-install) and run the following commands in the project root
 
-heroku config:set HOST=0.0.0.0
+2) `heroku create socket-template --region eu`
 
-heroku config:set NODE_ENV=production
+3) `heroku git:remote -app socket-template`
+
+4) `heroku config:set YARN_PRODUCTION=false`
+
+5) `heroku config:set HOST=0.0.0.0`
+
+6) `heroku config:set NODE_ENV=production`
+
+7) connect your github repository to heroku dashboard
+
+8) (optional) in heroku dashboard enable automatic deploys
