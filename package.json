@@ -4,7 +4,7 @@
   "license": "MIT",
   "main": "src/index.js",
   "scripts": {
-    "build": "node -r esm ./src/index.js",
+    "build": "webpack",
     "watch": "nodemon -r esm ./src/index.js"
   },
   "dependencies": {
@@ -14,7 +14,10 @@
     "socket.io": "^4.2.0"
   },
   "devDependencies": {
+    "esm": "^3.2.25",
     "nodemon": "^2.0.12",
-    "esm": "^3.2.25"
+    "webpack": "^5.51.2",
+    "webpack-cli": "^4.8.0",
+    "webpack-node-externals": "^3.0.0"
   }
 }
