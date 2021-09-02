@@ -6,8 +6,7 @@
   "scripts": {
     "build": "webpack",
     "start": "node -r esm ./src/index.js",
-    "watch": "nodemon -r esm ./src/index.js",
-    "heroku-postbuild": "yarn build"
+    "watch": "nodemon -r esm ./src/index.js"
   },
   "dependencies": {
     "cors": "^2.8.5",

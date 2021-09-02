@@ -21,6 +21,6 @@ app.use('/', (req, res) => {
 
 io.on('connection', addSocketEvents)
 
-server.listen(process.env.PORT || 5000, () => {
+server.listen(process.env.PORT, () => {
   console.log('listening on', process.env.PORT)
 })
