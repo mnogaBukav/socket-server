@@ -19,7 +19,7 @@ app.use('/', (req, res) => {
   res.send('ok')
 })
 
-io.on('connection', addSocketEvents)
+addSocketEvents(io)
 
 server.listen(process.env.PORT, () => {
   console.log('listening on', process.env.PORT)
