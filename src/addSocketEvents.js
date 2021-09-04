@@ -4,27 +4,30 @@ import {
   JOIN_ROOM,
   SENT_MESSAGE,
   RECEIVE_MESSAGE,
+  USER_CONNECTED,
   USER_DISCONNECTED,
 } from './constants'
 
 const addSocketEvents = (io) => {
   io.on(CONNECTION, (socket) => {
+    let userId
     let roomBroadcast
-    let clientId
 
     try {
       socket.on(JOIN_ROOM, ({ room, id }) => {
-        socket.join(room)
+        userId = id
         roomBroadcast = room
-        clientId = id
+
+        socket.join(roomBroadcast)
+        socket.to(roomBroadcast).emit(USER_CONNECTED, userId)
       })
 
-      socket.on(SENT_MESSAGE, (incomingMessage) => {
-        io.to(roomBroadcast).emit(RECEIVE_MESSAGE, incomingMessage)
+      socket.on(SENT_MESSAGE, (message) => {
+        io.to(roomBroadcast).emit(RECEIVE_MESSAGE, { message, from: userId })
       })
 
       socket.on(DISCONNECT, () => {
-        io.to(roomBroadcast).emit(USER_DISCONNECTED, clientId)
+        socket.to(roomBroadcast).emit(USER_DISCONNECTED, userId)
       })
     } catch (error) {
       console.log(error)
